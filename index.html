@@ -1,213 +1,252 @@
-<iframe 
-  style="position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; margin:0; padding:0; display:block; overflow:hidden; z-index:1;"
-  srcdoc='
-  <!DOCTYPE html>
-  <html lang="tr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proje Ödevi - Casino Demo</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #131a09;
-        font-family: "Segoe UI", sans-serif;
-        color: #fff;
-        overflow-x: hidden;
-      }
-      * { box-sizing: border-box; }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proje Ödevi - Casino Demo</title>
+  <style>
+    /* GENEL */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #131a09;
+      color: #fff;
+    }
 
-      .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #182507;
-        padding: 10px 20px;
-        border-bottom: 2px solid #caa93a;
-      }
-      .logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: #caa93a;
-      }
-      .logo span { color: #fff; }
-      .menu a {
-        text-decoration: none;
-        color: #eee;
-        margin: 0 10px;
-        font-size: 14px;
-        transition: color 0.3s;
-      }
-      .menu a:hover { color: #caa93a; }
-      .user-panel button {
-        background: #caa93a;
-        border: none;
-        padding: 8px 12px;
-        margin-left: 5px;
-        border-radius: 4px;
-        color: #131a09;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .user-panel button:hover { background: #f0ca48; }
+    /* ÜST MENÜ */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #182507;
+      padding: 10px 20px;
+      border-bottom: 2px solid #caa93a;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #caa93a;
+    }
+    .logo span {
+      color: #fff;
+    }
+    .menu a {
+      text-decoration: none;
+      color: #eee;
+      margin: 0 10px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    .menu a:hover {
+      color: #caa93a;
+    }
+    .user-panel button {
+      background: #caa93a;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 5px;
+      border-radius: 4px;
+      color: #131a09;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .user-panel button:hover {
+      background: #f0ca48;
+    }
 
-      .hero {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                    url("https://cdn.pixabay.com/photo/2017/02/20/13/28/casino-2083547_1280.jpg");
-        background-size: cover;
-        background-position: center;
-        height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      .hero-text h2 {
-        color: #f4c542;
-        font-size: 40px;
-        margin: 0;
-      }
-      .hero-text p {
-        font-size: 18px;
-        margin: 10px 0 20px;
-      }
-      .cta-btn {
-        background: #caa93a;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 6px;
-        font-weight: bold;
-        color: #131a09;
-        cursor: pointer;
-      }
-      .cta-btn:hover { background: #f0ca48; }
+    /* HERO BÖLÜMÜ */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url('https://cdn.pixabay.com/photo/2017/02/20/13/28/casino-2083547_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-text h2 {
+      color: #f4c542;
+      font-size: 40px;
+      margin: 0;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin: 10px 0 20px;
+    }
+    .cta-btn {
+      background: #caa93a;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #131a09;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      background: #f0ca48;
+    }
 
-      .categories {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 30px 0;
-        background-color: #1a220a;
-      }
-      .cat {
-        text-align: center;
-        margin: 15px;
-      }
-      .cat img {
-        width: 70px;
-        height: 70px;
-        filter: brightness(0.9) invert(0.1);
-      }
-      .cat p {
-        margin-top: 8px;
-        color: #caa93a;
-        font-weight: bold;
-      }
+    /* KATEGORİLER */
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 30px 0;
+      background-color: #1a220a;
+    }
+    .cat {
+      text-align: center;
+      margin: 15px;
+    }
+    .cat img {
+      width: 70px;
+      height: 70px;
+      filter: brightness(0.9) invert(0.1);
+    }
+    .cat p {
+      margin-top: 8px;
+      color: #caa93a;
+      font-weight: bold;
+    }
 
-      .promo {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        background-color: #101707;
-        padding: 40px 10px;
-      }
-      .promo-card {
-        background-color: #1a220a;
-        border: 1px solid #2a3810;
-        border-radius: 8px;
-        width: 280px;
-        margin: 10px;
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.3s;
-      }
-      .promo-card:hover { transform: translateY(-5px); }
-      .promo-card h3 { color: #caa93a; }
-      .promo-card button {
-        background-color: #caa93a;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 4px;
-        color: #131a09;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-      .promo-card button:hover { background-color: #f0ca48; }
+    /* PROMOSYONLAR */
+    .promo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #101707;
+      padding: 40px 10px;
+    }
+    .promo-card {
+      background-color: #1a220a;
+      border: 1px solid #2a3810;
+      border-radius: 8px;
+      width: 280px;
+      margin: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .promo-card:hover {
+      transform: translateY(-5px);
+    }
+    .promo-card h3 {
+      color: #caa93a;
+    }
+    .promo-card button {
+      background-color: #caa93a;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      color: #131a09;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .promo-card button:hover {
+      background-color: #f0ca48;
+    }
 
-      footer {
-        background-color: #182507;
-        text-align: center;
-        padding: 15px;
-        color: #caa93a;
-        font-size: 13px;
-      }
+    /* FOOTER */
+    footer {
+      background-color: #182507;
+      text-align: center;
+      padding: 15px;
+      color: #caa93a;
+      font-size: 13px;
+    }
 
-      @media (max-width: 768px) {
-        .menu { display: none; }
-        .hero-text h2 { font-size: 28px; }
-        .promo-card { width: 90%; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="logo">GRANDCASINO<span>DEMO</span></div>
-      <nav class="menu">
-        <a href="#">Spor Bahisleri</a>
-        <a href="#">Canlı Bahis</a>
-        <a href="#">3D Slot Salonu</a>
-        <a href="#">Canlı Casino</a>
-        <a href="#">TV Oyunları</a>
-        <a href="#">Zepplin</a>
-        <a href="#">Crash</a>
-      </nav>
-      <div class="user-panel">
-        <button>Giriş</button>
-        <button>Kayıt Ol</button>
-      </div>
-    </header>
+    /* MOBİL UYUMLU */
+    @media (max-width: 768px) {
+      .menu { display: none; }
+      .hero-text h2 { font-size: 28px; }
+      .promo-card { width: 90%; }
+    }
+  </style>
+</head>
+<body>
 
-    <section class="hero">
-      <div class="hero-text">
-        <h2>20.000.000₺ JACKPOT!</h2>
-        <p>Amusnet (EGT) Mythical Treasure oyununda büyük ödül!</p>
-        <button class="cta-btn">Hemen Oyna</button>
-      </div>
-    </section>
+  <!-- ÜST MENÜ -->
+  <header class="topbar">
+    <div class="logo">GRANDCASINO<span>DEMO</span></div>
+    <nav class="menu">
+      <a href="#">Spor Bahisleri</a>
+      <a href="#">Canlı Bahis</a>
+      <a href="#">3D Slot Salonu</a>
+      <a href="#">Canlı Casino</a>
+      <a href="#">TV Oyunları</a>
+      <a href="#">Zepplin</a>
+      <a href="#">Crash</a>
+    </nav>
+    <div class="user-panel">
+      <button class="login-btn">Giriş</button>
+      <button class="register-btn">Kayıt Ol</button>
+    </div>
+  </header>
 
-    <section class="categories">
-      <div class="cat"><img src="https://cdn-icons-png.flaticon.com/512/992/992703.png"><p>Spor</p></div>
-      <div class="cat"><img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png"><p>Canlı Casino</p></div>
-      <div class="cat"><img src="https://cdn-icons-png.flaticon.com/512/615/615075.png"><p>3D Slot</p></div>
-      <div class="cat"><img src="https://cdn-icons-png.flaticon.com/512/1106/1106655.png"><p>TV Oyunları</p></div>
-      <div class="cat"><img src="https://cdn-icons-png.flaticon.com/512/4711/4711274.png"><p>Crash</p></div>
-    </section>
+  <!-- ANA BANNER -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Grandpashabet — Eğlen, Bahis Yap, Kazan</h2>
+      <p>Amusnet (EGT) Tek tıkla giriş, güvenli altyapı ve cazip bonuslarla oyun keyfi Grandpashabet’te!
+</p> <br> 
+<p>
+Grandpashabet, Grandpa Digital Ltd. tarafından sunulan Curacao eGaming lisanslı bahis ve casino platformudur. Yüksek oranlı bahisler, canlı krupiyeli masalar ve heyecan verici slot oyunları ile kesintisiz eğlence sağlar. Mobil uyumlu arayüz sayesinde dilediğin cihazdan kolay erişim, anında para yatırma ve hızlı çekim imkânı sunar. Grandpashabet’te her oyun bir fırsat.
+</p>
+</br>
+      <button class="cta-btn">Hemen Oyna</button>  <button class="cta-btn">Siteye Git!</button>
+    </div>
+  </section>
 
-    <section class="promo">
-      <div class="promo-card">
-        <h3>Çarkıfelek Bonusu</h3>
-        <p>Günde 1 kez çevir, bedava bonus kazan!</p>
-        <button>Hemen Çevir</button>
-      </div>
-      <div class="promo-card">
-        <h3>Mobil Uygulama</h3>
-        <p>QR kodu tarat, uygulamamızı indir!</p>
-        <button>QR Kodu Göster</button>
-      </div>
-      <div class="promo-card">
-        <h3>VIP Üyelik</h3>
-        <p>Günlük çekim limiti 500.000₺ — VIP avantajları seni bekliyor.</p>
-        <button>Detaylı Bilgi</button>
-      </div>
-    </section>
+  <!-- KATEGORİLER -->
+  <section class="categories">
+    <div class="cat">
+      <img src="https://cdn-icons-png.flaticon.com/512/992/992703.png" alt="spor">
+      <p>Spor</p>
+    </div>
+    <div class="cat">
+      <img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png" alt="casino">
+      <p>Canlı Casino</p>
+    </div>
+    <div class="cat">
+      <img src="https://cdn-icons-png.flaticon.com/512/615/615075.png" alt="slot">
+      <p>3D Slot</p>
+    </div>
+    <div class="cat">
+      <img src="https://cdn-icons-png.flaticon.com/512/1106/1106655.png" alt="tv">
+      <p>TV Oyunları</p>
+    </div>
+    <div class="cat">
+      <img src="https://cdn-icons-png.flaticon.com/512/4711/4711274.png" alt="crash">
+      <p>Crash</p>
+    </div>
+  </section>
 
-    <footer>
-      <p>© 2025 GRANDCASINO DEMO — Bu site sadece eğitim amaçlı hazırlanmıştır.</p>
-    </footer>
-  </body>
-  </html>'
-></iframe>
+  <!-- PROMOSYONLAR -->
+  <section class="promo">
+    <div class="promo-card">
+      <h3>Çarkıfelek Bonusu</h3>
+      <p>Günde 1 kez çevir, bedava bonus kazan!</p>
+      <button>Hemen Çevir</button>
+    </div>
+    <div class="promo-card">
+      <h3>Mobil Uygulama</h3>
+      <p>QR kodu tarat, uygulamamızı indir!</p>
+      <button>QR Kodu Göster</button>
+    </div>
+    <div class="promo-card">
+      <h3>VIP Üyelik</h3>
+      <p>Günlük çekim limiti 500.000₺ — VIP avantajları seni bekliyor.</p>
+      <button>Detaylı Bilgi</button>
+    </div>
+  </section>
+
+  <!-- ALT BİLGİ -->
+  <footer>
+    <p>© 2025 GRANDCASINO DEMO — Bu site sadece eğitim amaçlı hazırlanmıştır.</p>
+  </footer>
+
+</body>
+</html>
